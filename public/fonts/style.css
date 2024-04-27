@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'SolaimanLipi';
+    src: url('SolaimanLipiNormal.woff2') format('woff2'),
+    url('SolaimanLipiNormal.woff') format('woff'),
+    url('SolaimanLipiNormal.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+body, a.btn, .btn, .form-label{
+    font-family: 'SolaimanLipi', serif;
+}
+div.dt-container div.dt-search,.dt-paging .pagination {
+    margin-right: 20px;
+}
+.dt-length,.dt-info{
+    margin-left: 20px;
+}
