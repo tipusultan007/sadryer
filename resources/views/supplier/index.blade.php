@@ -103,13 +103,12 @@
                     { "data": "name" },
                     { "data": "phone", sorting: false },
                     { "data": "address", sorting: false },
-                    { "data": "due" },
+                    { "data": "due",sorting: false },
                     { "data": "options", sorting: false },
                 ],
                 "columnDefs": [
                     { "sorting": [ "desc", "asc" ], "targets": [ "_all" ] }
                 ],
-                "order": [[ 3, "desc" ]],
                 "buttons": [
                     {
                         extend: 'excelHtml5',

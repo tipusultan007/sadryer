@@ -37,7 +37,7 @@ return new class extends Migration
             $table->unsignedBigInteger('purchase_id');
             $table->unsignedBigInteger('product_id');
             $table->decimal('weight')->nullable();
-            $table->integer('quantity');
+            $table->integer('quantity')->nullable();
             $table->decimal('amount', 10, 2);
             $table->decimal('price_rate', 10, 2); // Added column
             $table->timestamps();

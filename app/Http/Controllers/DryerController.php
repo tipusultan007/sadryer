@@ -70,6 +70,10 @@ class DryerController extends Controller
             'status' => $request->input('status'),
         ]);
 
+        $product = Product::find($request->input('product_id'));
+        $product->weight -= $dryer->weight;
+        $product->save();
+
         // Save the dryer instance to the database
         $dryer->save();
 
@@ -127,6 +131,8 @@ class DryerController extends Controller
      */
     public function destroy(Dryer $dryer)
     {
+        $dryer->product->weight += $dryer->weight;
+        $dryer->product->save();
         // Get the associated DryerToStock records
         $dryerToStocks = $dryer->dryerToStocks;
 

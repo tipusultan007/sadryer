@@ -95,7 +95,7 @@
                                 <tr>
                                     <th class="fw-bolder text-black fs-3">চালের ধরণ</th>
                                     <th class="fw-bolder text-black fs-3">দর</th>
-                                    <th class="fw-bolder text-black fs-3">পরিমাণ (বস্তা সংখ্যা)</th>
+                                    <th class="fw-bolder text-black fs-3">ওজন</th>
                                     <th class="fw-bolder text-black fs-3 text-end">টাকা</th>
                                 </tr>
                                 </thead>
@@ -104,7 +104,7 @@
                                     <tr>
                                         <td>{{ $product->product->name }}</td>
                                         <td>{{ $product->price_rate }}</td>
-                                        <td>{{ $product->quantity }}</td>
+                                        <td>{{ $product->weight }}</td>
                                         <td class="text-end">{{ $product->amount }}</td>
                                     </tr>
                                 @endforeach

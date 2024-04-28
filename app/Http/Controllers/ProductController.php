@@ -37,7 +37,7 @@ class ProductController extends Controller
     {
         $columns = array(
             0 =>'name',
-            1 =>'quantity',
+            1 =>'weight',
             2=> 'price_rate',
         );
 
@@ -85,7 +85,7 @@ class ProductController extends Controller
                 $nestedData['weight'] = $post->weight??'0';
                 $nestedData['quantity'] = $post->quantity??'0';
                 $nestedData['price_rate'] = $post->price_rate??'-';
-                $nestedData['stock_value'] = $post->quantity * $post->price_rate;
+                $nestedData['stock_value'] = $post->weight * $post->price_rate;
 
                 $nestedData['options'] = '<div class="dropdown">
                                               <a href="#" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">Action</a>

@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $productQuantities = Product::selectRaw('type, SUM(quantity) as total_quantity')
+        $productQuantities = Product::selectRaw('type, SUM(weight) as total_quantity')
             ->whereIn('type', ['25', '50'])
             ->groupBy('type')
             ->pluck('total_quantity', 'type');

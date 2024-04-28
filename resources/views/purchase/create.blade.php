@@ -174,18 +174,16 @@
                                         <table class="table table-sm products table-borderless">
                                             <thead style="background-color: #eeeeee">
                                             <tr>
-                                                <th class="fw-bolder fs-5 p-2">ওজন</th>
                                                 <th style="min-width: 300px" class="fw-bolder fs-5 p-2">বিবরণ</th>
                                                 <th style="min-width: 100px" class="fw-bolder fs-5 p-2">দর</th>
-                                                <th style="min-width: 100px" class="fw-bolder fs-5 p-2">পরিমাণ</th>
+                                                <th class="fw-bolder fs-5 p-2">ওজন (কেজি)</th>
+                                               {{-- <th style="min-width: 100px" class="fw-bolder fs-5 p-2">পরিমাণ</th>--}}
                                                 <th style="min-width: 100px" class="fw-bolder fs-5 p-2">টাকা</th>
                                                 <th style="min-width: 100px">Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr class="product-entry">
-                                                <td><input type="number" name="products[0][weight]" class="form-control"
-                                                           value="{{ old("products.0.weight") }}"></td>
                                                 <td>
                                                     <select name="products[0][product_id]"
                                                             class="form-select products-select2" required data-placeholder="সিলেক্ট প্রোডাক্ট">
@@ -197,11 +195,12 @@
                                                         @endforeach
                                                     </select>
                                                 </td>
-
                                                 <td><input type="number" name="products[0][price_rate]" class="form-control"
                                                            value="{{ old("products.0.price_rate") }}" required></td>
-                                                <td><input type="number" name="products[0][quantity]" class="form-control"
-                                                           value="{{ old("products.0.quantity") }}" required></td>
+                                                <td><input type="number" name="products[0][weight]" class="form-control"
+                                                           value="{{ old("products.0.weight") }}"></td>
+                                                {{--<td><input type="number" name="products[0][quantity]" class="form-control"
+                                                           value="{{ old("products.0.quantity") }}" required></td>--}}
                                                 <td><input type="number" name="products[0][amount]" class="form-control"
                                                            value="{{ old("products.0.amount") }}" required></td>
                                                 <td>
@@ -412,7 +411,7 @@
         function updateAmountAndTotal() {
             // Loop through each product entry row
             $('.product-entry').each(function (index) {
-                var quantity = parseFloat($(this).find('input[name^="products[' + index + '][quantity]"]').val()) || 0;
+                var quantity = parseFloat($(this).find('input[name^="products[' + index + '][weight]"]').val()) || 0;
                 var priceRate = parseFloat($(this).find('input[name^="products[' + index + '][price_rate]"]').val()) || 0;
                 var amount = quantity * priceRate;
 
@@ -494,7 +493,7 @@
                 allowInput: true,
                 altFormat: "d-m-Y",
                 dateFormat: "Y-m-d",
-                defaultDate: "{{ $lastPurchase?$lastPurchase->date:date('Y-m-d') }}"
+                defaultDate: "{{ date('Y-m-d') }}"
             });
         });
     </script>

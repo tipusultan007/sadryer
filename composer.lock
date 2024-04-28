@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "86c2f7527da354f5fb9a5767524284fd",
+    "content-hash": "4caac34485a02b7f3c8acb7cffbbd5e0",
     "packages": [
         {
             "name": "brick/math",
@@ -5764,6 +5764,51 @@
                 }
             ],
             "time": "2024-03-19T11:56:30+00:00"
+        },
+        {
+            "name": "tachii/artisan-gui",
+            "version": "v3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Tachii/artisan-gui.git",
+                "reference": "6a40d692b19f37b80eab9fefec1f30868078e101"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Tachii/artisan-gui/zipball/6a40d692b19f37b80eab9fefec1f30868078e101",
+                "reference": "6a40d692b19f37b80eab9fefec1f30868078e101",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.0|^9.0|^10.0",
+                "php": "^7.3|^8.0"
+            },
+            "replace": {
+                "infureal/artisan-gui": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Infureal\\Providers\\GuiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Infureal\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Beautiful package for [laravel:artisan] gui for cool kids.",
+            "support": {
+                "issues": "https://github.com/Tachii/artisan-gui/issues",
+                "source": "https://github.com/Tachii/artisan-gui/tree/v3.1.2"
+            },
+            "time": "2024-01-18T21:39:27+00:00"
         },
         {
             "name": "takielias/tablar",

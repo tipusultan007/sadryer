@@ -46,7 +46,6 @@ class SupplierController extends Controller
     {
         $columns = array(
             0 =>'name',
-            3 =>'remaining_due',
         );
 
         $totalData = Supplier::count();
@@ -92,7 +91,7 @@ class SupplierController extends Controller
                 $nestedData['name'] = $post->name;
                 $nestedData['phone'] = $post->phone??'-';
                 $nestedData['address'] = $post->address??'-';
-                $nestedData['due'] = $post->remainingDue;
+                $nestedData['due'] = $post->remainingDue??0;
 
                 $nestedData['options'] = '<div class="dropdown">
                                               <a href="#" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">Action</a>

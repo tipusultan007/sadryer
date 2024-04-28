@@ -178,7 +178,7 @@ class PurchaseController extends Controller
                 $nestedData['date'] = date('d/m/Y', strtotime($post->date));
                 $nestedData['invoice_no'] = $post->invoice_no ?? '-';
                 $nestedData['name'] = $post->supplier->name . '-' . $post->supplier->address ?? '';
-                $nestedData['quantity'] = $post->purchaseDetails->sum('quantity');
+                $nestedData['quantity'] = $post->purchaseDetails->sum('weight');
                 $nestedData['total'] = $post->total;
                 $nestedData['paid'] = $post->paid ?? '-';
                 $data[] = $nestedData;
@@ -274,13 +274,12 @@ class PurchaseController extends Controller
                     'weight' => $product['weight'],
                     'purchase_id' => $purchase->id,
                     'product_id' => $product['product_id'],
-                    'quantity' => $product['quantity'],
                     'amount' => $product['amount'],
                     'price_rate' => $product['price_rate'],
                 ]);
 
                 $productModel = Product::find($product['product_id']);
-                $productModel->quantity += $product['quantity'];
+                $productModel->weight += $product['weight'];
                 $productModel->price_rate = $product['price_rate'];
                 $productModel->save();
             }
@@ -490,14 +489,14 @@ class PurchaseController extends Controller
                 $purchaseDetail = PurchaseDetail::create([
                     'purchase_id' => $purchase->id,
                     'product_id' => $product['product_id'],
-                    'quantity' => $product['quantity'],
+                    'weight' => $product['weight'],
                     'amount' => $product['amount'],
                     'price_rate' => $product['price_rate'],
                 ]);
 
                 // Update product quantity
                 $productModel = Product::find($product['product_id']);
-                $productModel->quantity += $product['quantity'];
+                $productModel->weight += $product['weight'];
                 $productModel->price_rate = $product['price_rate'];
                 $productModel->save();
             }
@@ -645,7 +644,7 @@ class PurchaseController extends Controller
             foreach ($purchaseDetails as $purchaseDetail) {
                 $product = Product::find($purchaseDetail->product_id);
                 if ($product) {
-                    $product->quantity -= $purchaseDetail->quantity;
+                    $product->weight -= $purchaseDetail->weight;
                     $product->save();
                 }
 
@@ -656,7 +655,7 @@ class PurchaseController extends Controller
                 foreach ($purchaseReturn->purchaseReturnDetail as $item) {
                     $product = Product::find($item->product_id);
                     if ($product) {
-                        $product->quantity += $item->quantity;
+                        $product->weight += $item->weight;
                         $product->save();
                     }
 
